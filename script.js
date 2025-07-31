@@ -25,7 +25,7 @@ for (let i = 1; i <= frameCount; i++) {
   Adjust 'framesPerScroll' to control how many frames advance per scroll event.
   For example, set framesPerScroll = 2 for 2 frames per scroll, 0.5 for half frame per scroll.
 */
-const framesPerScroll = 0.2; // <-- Change this value to adjust frames rendered per scroll event
+const framesPerScroll = 0.10; // <-- Change this value to adjust frames rendered per scroll event
 
 let lastKnownScrollY = window.scrollY;
 let currentFrameIndex = 0;
