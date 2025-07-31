@@ -24,7 +24,7 @@ for (let i = 1; i <= frameCount; i++) {
 // Adjust the scroll sensitivity by changing the multiplier below.
 // For example, set scrollMultiplier = 2 for double speed, 0.5 for half speed.
 */
-const scrollMultiplier = 0.5; // <-- Change this value to adjust scrolling speed.5
+const scrollMultiplier = 0.2; // <-- Change this value to adjust scrolling speed.5
 
 function render() {
   const scrollTop = window.scrollY * scrollMultiplier;
