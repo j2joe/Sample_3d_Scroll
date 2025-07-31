@@ -20,34 +20,43 @@ for (let i = 1; i <= frameCount; i++) {
 }
 
 /*
-// Mouse scrolling speed
-// Adjust the scroll sensitivity by changing the multiplier below.
-// For example, set scrollMultiplier = 2 for double speed, 0.5 for half speed.
+  SCROLL TRIGGER SETTINGS
+  -----------------------
+  Adjust 'framesPerScroll' to control how many frames advance per scroll event.
+  For example, set framesPerScroll = 2 for 2 frames per scroll, 0.5 for half frame per scroll.
 */
-const scrollMultiplier = 0.2; // <-- Change this value to adjust scrolling speed.5
+const framesPerScroll = 0.2; // <-- Change this value to adjust frames rendered per scroll event
 
-function render() {
-  const scrollTop = window.scrollY * scrollMultiplier;
-  const maxScrollTop = (document.body.scrollHeight - window.innerHeight) * scrollMultiplier;
-  const scrollFraction = scrollTop / maxScrollTop;
-  const frameIndex = Math.min(
-    frameCount - 1,
-    Math.ceil(scrollFraction * frameCount)
-  );
+let lastKnownScrollY = window.scrollY;
+let currentFrameIndex = 0;
 
-  requestAnimationFrame(() => {
-    const image = images[frameIndex];
-    if (image?.complete) {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(image, 0, 0, canvas.width, canvas.height);
-    }
-  });
+function renderFrame(index) {
+  const image = images[index];
+  if (image?.complete) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+  }
 }
 
-window.addEventListener("scroll", render);
+// Use scroll event as a trigger to advance frames
+window.addEventListener("scroll", () => {
+  const scrollDelta = window.scrollY - lastKnownScrollY;
+  lastKnownScrollY = window.scrollY;
 
+  // Calculate how many frames to advance based on scroll delta and framesPerScroll
+  let frameAdvance = Math.round(scrollDelta * framesPerScroll);
+  if (frameAdvance !== 0) {
+    currentFrameIndex = Math.min(
+      frameCount - 1,
+      Math.max(0, currentFrameIndex + frameAdvance)
+    );
+    renderFrame(currentFrameIndex);
+  }
+});
+
+// Ensure correct frame on resize
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  render();
+  renderFrame(currentFrameIndex);
 });
