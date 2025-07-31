@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3D Scroll Background</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="relative overflow-x-hidden bg-black text-white">
+
+  <!-- 🔴 Canvas background -->
+  <canvas id="hero-canvas" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
+
+  <!-- 🔵 Foreground stylish content -->
+  <main class="relative z-10">
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 drop-shadow-md">
+        Scroll-Driven 3D Animation
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl text-gray-300">
+        A visually engaging website experience powered by Tailwind CSS and canvas background animation.
+      </p>
+      <a href="#features" class="mt-10 inline-block px-8 py-3 bg-white text-black rounded-full shadow-lg hover:scale-105 transition-transform font-semibold">
+        Explore More
+      </a>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="min-h-screen px-6 py-16 bg-opacity-80 ">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold mb-10 text-center">Why It Works</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-6 bg-white bg-opacity-10 rounded-2xl border border-white/10 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Smooth Animation</h3>
+            <p class="text-sm text-gray-300">Scroll-linked canvas image sequencing gives a buttery-smooth 3D animation background.</p>
+          </div>
+          <div class="p-6 bg-white bg-opacity-10 rounded-2xl border border-white/10 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Tailwind Design</h3>
+            <p class="text-sm text-gray-300">Fast and flexible modern design using utility-first Tailwind CSS.</p>
+          </div>
+          <div class="p-6 bg-white bg-opacity-10 rounded-2xl border border-white/10 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Responsive & Sleek</h3>
+            <p class="text-sm text-gray-300">Responsive layout scales well from phones to large desktops.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

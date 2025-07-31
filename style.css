@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 5000px; /* Make it scrollable */
+  background: linear-gradient(to bottom, #f0f0f0 0%, #c22727 100%);
+}
+
+#hero-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.scroll-container {
+  height: 5000px;
+}
